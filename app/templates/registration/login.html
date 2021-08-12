@@ -17,6 +17,9 @@
         <div class="logout_button">
           <a href="{% url 'logout' %}">LOG OUT</a>
         </div>
+        <div class="logout_button">
+          <a href="/accounts/logout">SOCIAL LOG OUT</a>
+        </div>
       {% else %}
         <form class="login_container" method="POST">
           {% csrf_token %}
@@ -25,7 +28,7 @@
           </div>
           <input class="input_box" type="text" name="username" placeholder="이름">
           <br>
-          <input class="input_box" type="text" name="password" placeholder="비밀번호">
+          <input class="input_box" type="password" name="password" placeholder="비밀번호">
           <br>
           <div class="login_signup">
             <button class="login_button" type="submit">LOGIN</button>
@@ -35,14 +38,14 @@
           </div>
         </form>
         <div class="button_wrapper">
-          <div>
-            <a class="menuLink" href="{% provider_login_url 'kakao' %}">
-
-
-              <img class="kakao_button" src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_narrow.png"></a>
-          </div>
-        </div>
-
+          <a class="menuLink" href="{% provider_login_url 'google' %}">
+          <img src="/static/glogin.png" width=200px;>
+          </a>
+            <!-- <a class="menuLink" href="{% provider_login_url 'kakao' %}">
+            <img class="kakao_button" src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_narrow.png">
+            </a> -->            
+            <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+      </div>      
       {% endif %}
     </div>
   </nav>

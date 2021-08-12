@@ -14,19 +14,16 @@ result.onmousedown = function (event) {
   function moveAt(pageX, pageY) {
     console.log(pageX)
     console.log(pageY)
-    if (271 < pageX && pageX < 541 && 166 < pageY && pageY < 428) {
-      console.log("suc")
+    var position = document.getElementById("capture").getElementsByClassName("img-box")[0].getBoundingClientRect();
+    if (position.left < pageX && pageX < position.right && position.top < pageY && pageY < position.bottom) {
       result.style.left = pageX - shiftX + 'px';
       result.style.top = pageY - shiftY + 'px';
     } else {
-      console.log("fail")
     }
   }
 
   function onMouseMove(event) {
     moveAt(event.pageX, event.pageY);
-    console.log(event.clientX)
-    console.log(event.clientY)
 
     result.hidden = true;
     let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
