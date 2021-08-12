@@ -39,7 +39,6 @@ def login(request):
             username=request.POST['username'],
             password=request.POST['password']
         )
-
         if (found_user is None):
             error = '아이디 또는 비밀번호가 틀렸습니다'
             return render(request, 'registration/login.html', {
