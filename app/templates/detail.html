@@ -19,7 +19,9 @@
             <!-- <img class="img" src="https://hackathon-zzalpangi.s3.ap-northeast-2.amazonaws.com/select/{{final_select_num}}.jpeg"> -->
             <!-- <img class="img" src="http://d3kjgqpj8a9chj.cloudfront.net/{{final_select_num}}.jpeg"> -->
             <img class="img" src="/static/images/{{final_select_num}}.jpeg">
-            <div class="result" id="result"></div>
+            <div class="result-box">
+                <div class="fontStyle1" id="result"></div>
+            </div>
         </div>
     </div>
 
@@ -183,39 +185,44 @@
         // result.style.top = top + 'px';
 
     function capture() {
-        console.log("capture?");
         const image = document.querySelector(".img-box");
-        image.style.width="100%";
-        image.style.height = "100%";
+        var html = document.getElementsByTagName("html")[0];
+        html.classList.add( "hide-scrollbar" );
 
-        let result = document.getElementById("result");
-        let resultPosition = document.getElementById("result").getBoundingClientRect();
-        let left = resultPosition.left;
-        let top = resultPosition.top;
+        // let result = document.querySelector(".img")
+        // let resultPosition = result.getBoundingClientRect();
+        // let result = document.getElementById("result");
+        // let resultPosition = document.getElementById("result").getBoundingClientRect();
+        // let left = resultPosition.left;
+        // let top = resultPosition.top;
 
-        var position = document.getElementById("capture").getElementsByClassName("img-box")[0].getBoundingClientRect();
-        image.append(result);
-        let originleft = position.left;
-        let origintop = position.top;
-        let originright = position.right;
-        let originbottom = position.bottom;
+        // var position = document.getElementById("capture").getElementsByClassName("img-box")[0].getBoundingClientRect();
+        // image.append(result);
+        // let originleft = position.left;
+        // let origintop = position.top;
+        // let originright = position.right;
+        // let originbottom = position.bottom;
 
-        let leftPercentage = (left-originleft)/(originright-originleft)*100-50;
-        let topPercentage = (top-origintop)/(originbottom-origintop)*100-50  ;
-        result.style.zIndex = 1000;
-        result.style.position = 'relative';
-        // result.style.left = left - originleft + 'px';
-        // result.style.top = top - origintop + 'px';
-        result.style.left = -50 +leftPercentage +15 +'%';
-        result.style.top = 100 +topPercentage+ '%';
-        result.style.whiteSpace = "nowrap";
-
+        // let leftPercentage = (left-originleft)/(originright-originleft)*100-50;
+        // let topPercentage = (top-origintop)/(originbottom-origintop)*100-50  ;
+        // result.style.zIndex = 1000;
+        // result.style.position = 'relative';
+        // // result.style.left = left - originleft + 'px';
+        // // result.style.top = top - origintop + 'px';
+        // result.style.left = -50 +leftPercentage +15 +'%';
+        // result.style.top = 100 +topPercentage+ '%';
+        // result.style.whiteSpace = "nowrap";
 
         window.scrollTo(0, 0);
         html2canvas(document.body.querySelector(".img-box"), {
                 logging: true,
                 letterRendering: 1,
-                useCORS: true
+                useCORS: true,
+                backgroundColor: null,
+                scrollX: -window.scrollX,
+                scrollY: -window.scrollY,
+                windowWidth: document.documentElement.offsetWidth,
+                windowHeight: document.documentElement.offsetHeight
             })
             .then(canvas => {
                 saveAs(canvas.toDataURL(), 'file-name.png');
