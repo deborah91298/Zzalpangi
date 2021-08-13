@@ -13,10 +13,12 @@
   {% if user.is_authenticated %}
 <div class="detailPage">
     <!-- <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script> -->
-    
+
     <div id="capture">
         <div class="img-box">
-            <img class="img" src="http://d3kjgqpj8a9chj.cloudfront.net/{{final_select_num}}.jpeg">
+            <!-- <img class="img" src="https://hackathon-zzalpangi.s3.ap-northeast-2.amazonaws.com/select/{{final_select_num}}.jpeg"> -->
+            <!-- <img class="img" src="http://d3kjgqpj8a9chj.cloudfront.net/{{final_select_num}}.jpeg"> -->
+            <img class="img" src="/static/images/{{final_select_num}}.jpeg">
             <div class="result" id="result"></div>
         </div>
     </div>
@@ -49,6 +51,10 @@
 <!-- <select><option value="html">html</option></select> -->
 <script src="{% static 'textmove.js' %}"></script>
 <script src="{% static 'html2canvas.js' %}"></script>
+<script
+      type="text/javascript"
+      src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
+    ></script>
 <script>
     //글자 입력하는대로 출력하게 
 
@@ -149,9 +155,61 @@
         fontStyleNo.innerHTML = 'style' + i;
     })
 
+    // function getCookie(cname) {
+    //     let name = cname + "=";
+    //     let ca = document.cookie.split(';');
+    //     for (let i = 0; i < ca.length; i++) {
+    //         let c = ca[i];
+    //         while (c.charAt(0) == ' ') {
+    //             c = c.substring(1);
+    //         }
+    //         if (c.indexOf(name) == 0) {
+    //             return c.substring(name.length, c.length);
+    //         }
+    //     }
+    //     return "";
+    // }
+
+    // let left = getCookie("left");
+    //     let top = getCookie("top");
+
+        // let result = document.getElementById("result");
+        // result.style.position = 'absolute';
+        // result.style.zIndex = 1000;
+
+        // var position = document.getElementById("capture").getElementsByClassName("img-box")[0].getBoundingClientRect();
+
+        // result.style.left = left + 'px';
+        // result.style.top = top + 'px';
+
     function capture() {
         console.log("capture?");
         const image = document.querySelector(".img-box");
+        image.style.width="100%";
+        image.style.height = "100%";
+
+        let result = document.getElementById("result");
+        let resultPosition = document.getElementById("result").getBoundingClientRect();
+        let left = resultPosition.left;
+        let top = resultPosition.top;
+
+        var position = document.getElementById("capture").getElementsByClassName("img-box")[0].getBoundingClientRect();
+        image.append(result);
+        let originleft = position.left;
+        let origintop = position.top;
+        let originright = position.right;
+        let originbottom = position.bottom;
+
+        let leftPercentage = (left-originleft)/(originright-originleft)*100-50;
+        let topPercentage = (top-origintop)/(originbottom-origintop)*100-50  ;
+        result.style.zIndex = 1000;
+        result.style.position = 'relative';
+        // result.style.left = left - originleft + 'px';
+        // result.style.top = top - origintop + 'px';
+        result.style.left = -50 +leftPercentage +15 +'%';
+        result.style.top = 100 +topPercentage+ '%';
+        result.style.whiteSpace = "nowrap";
+
 
         window.scrollTo(0, 0);
         html2canvas(document.body.querySelector(".img-box"), {
@@ -162,10 +220,13 @@
             .then(canvas => {
                 saveAs(canvas.toDataURL(), 'file-name.png');
             });
+
     };
 
-    function saveAs(uri, filename) {
 
+
+
+    function saveAs(uri, filename) {
         var link = document.createElement('a');
         if (typeof link.download === 'string') {
             document.querySelector(".img-box").appendChild(result);
@@ -194,11 +255,11 @@
     // }
 
     const goHome = () => {
-      // let sum = select_num1 + select_num2 + select_num3
-      
-      console.log('HI')
-      location.href = `/home`
-      // history.push('www.naver.com')
+        // let sum = select_num1 + select_num2 + select_num3
+
+        console.log('HI')
+        location.href = `/home`
+        // history.push('www.naver.com')
     }
 </script>
   {% else %}
@@ -212,6 +273,6 @@
 
 {% block button_box%}
 <div class="submit_button">
-<button id="finalResult" onclick={goHome()}>홈으로</button>
+    <button id="finalResult" onclick={goHome()}>홈으로</button>
 </div>
 {% endblock button_box %}
