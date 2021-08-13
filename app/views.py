@@ -28,7 +28,8 @@ def signup(request):
             blankerror = '이름 또는 비밀번호를 입력해주세요'
             return render(request, 'registration/signup.html', {'error': blankerror})
         new_user = User.objects.create_user(
-        username, password)
+          username=request.POST['username'],
+          password=request.POST['password'])
         auth.login(request, new_user,
                   backend='django.contrib.auth.backends.ModelBackend')
         return redirect('home')
@@ -42,7 +43,6 @@ def login(request):
             username=request.POST['username'],
             password=request.POST['password']
         )
-
         if (found_user is None):
             error = '아이디 또는 비밀번호가 틀렸습니다'
             return render(request, 'registration/login.html', {

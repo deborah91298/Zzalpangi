@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block image_box %}
+  {% if user.is_authenticated %}
 <div class="detailPage">
     <!-- <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script> -->
 
@@ -261,6 +262,12 @@
         // history.push('www.naver.com')
     }
 </script>
+  {% else %}
+  <div style="text-align:center; color:rgb(199, 99, 113); margin-top: 10%;">
+  <img src="https://item.kakaocdn.net/do/58119590d6204ebd70e97763ca933bafac8e738cb631e72fdb9a96b36413984e"><br>
+  <h3>로그인이 필요한 서비스입니다.</h3>
+  </div>
+  {% endif %}
 {% endblock image_box %}
 
 

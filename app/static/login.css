@@ -12,6 +12,9 @@
   flex-direction: row;
   justify-content: space-around;
 }
+.top_container{
+  height: 100%;
+}
 .login_signup {
   display: flex;
   flex-direction: row;
@@ -19,7 +22,7 @@
 }
 .login_container {
   width: 245px;
-  height: 40%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -30,13 +33,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 30px;
+  padding-bottom: 5%;
 }
 
 .message {
   font-size: 20px;
   color: rgb(241, 187, 120);
   font-weight: 800;
+}
+
+.input_container{
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .input_box {
@@ -60,6 +70,14 @@
   border-style: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
+}
+
+.logout_container {
+  width: 245px;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .logout_button {
@@ -108,7 +126,7 @@ a:visited {
   width: 90%;
   height: 100%;
   border-radius: 50%;
-  background: #FCD8C0;
+  background: #fcd8c0;
   display: flex;
   align-items: center;
   justify-content: center;
