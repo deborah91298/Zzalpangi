@@ -5,12 +5,11 @@ from django.contrib import auth
 
 def home(request):
     # if(request.user.is_authenticated):
-    return render(request, 'home.html')
     # if request.method == 'POST':
     #     picture = Post.objects.create(
 
     #     )
-    #     return redirect('detail', picture.pk)
+    return render(request, 'home.html')
 
 
 def mypage(request):
