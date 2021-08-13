@@ -182,6 +182,8 @@
     function capture() {
         console.log("capture?");
         const image = document.querySelector(".img-box");
+        image.style.width="100%";
+        image.style.height = "100%";
 
         let result = document.getElementById("result");
         let resultPosition = document.getElementById("result").getBoundingClientRect();
@@ -203,6 +205,7 @@
         // result.style.top = top - origintop + 'px';
         result.style.left = -50 +leftPercentage +15 +'%';
         result.style.top = 100 +topPercentage+ '%';
+        result.style.whiteSpace = "nowrap";
 
 
         window.scrollTo(0, 0);
@@ -252,7 +255,7 @@
         // let sum = select_num1 + select_num2 + select_num3
 
         console.log('HI')
-        location.href = `http://127.0.0.1:8000/home/`
+        location.href = `/home`
         // history.push('www.naver.com')
     }
 </script>
