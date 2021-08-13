@@ -12,24 +12,26 @@
   {% endif %}
 
   <nav id="topMenu">
-    <div>
+    <div class="top_container">
       {% if user.is_authenticated %}
+      <div class="logout_container">
         <div class="logout_button">
           <a href="{% url 'logout' %}">LOG OUT</a>
         </div>
         <div class="logout_button">
           <a href="/accounts/logout">SOCIAL LOG OUT</a>
         </div>
+      </div>
       {% else %}
         <form class="login_container" method="POST">
           {% csrf_token %}
           <div class="welcome_message">
-            <p class="message">Welcome to Zzalpangi~!</p>
+            <p class="message">START ZZALPANGI</p>
           </div>
-          <input class="input_box" type="text" name="username" placeholder="이름">
-          <br>
-          <input class="input_box" type="password" name="password" placeholder="비밀번호">
-          <br>
+          <div class="input_container">
+            <input class="input_box" type="text" name="username" placeholder="이름">
+            <input class="input_box" type="password" name="password" placeholder="비밀번호">
+          </div>
           <div class="login_signup">
             <button class="login_button" type="submit">LOGIN</button>
             <div class="login_button">

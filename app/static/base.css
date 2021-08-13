@@ -100,6 +100,10 @@ h1 span:nth-child(9) {
   animation-delay: 0.4s;
 }
 
+#topMenu{
+  height:70%;
+}
+
 .body-container {
   position: relative;
   display: flex;
@@ -109,12 +113,10 @@ h1 span:nth-child(9) {
   width: 414px;
   height: 736px;
   background: #ffefec;
-  box-shadow: 4px 4px 10px 5px rgba(216, 216, 216, 0.5);
+  box-shadow: 5px 5px 5px 5px rgba(216, 216, 216, 0.5);
   border-radius: 10px;
 }
 
-.header {
-}
 
 .image_box {
   position: relative;
