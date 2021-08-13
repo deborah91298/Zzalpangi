@@ -47,18 +47,10 @@
   <script>
     let final_select_num = '';
     let semi_select_num = '';
-    let select_num1 = '';
-    let select_num2 = '';
-    let select_num3 = '';
-    let img7
-    let img8
-    let img9
-    let btn_1;
-    let btn_2;
-    let btn_3;
-    let btn_num_1;
-    let btn_num_2;
-    let btn_num_3;
+    let select_num1, select_num2, select_num3 = '';
+    let img7, img8, img9;
+    let btn_1, btn_2, btn_3;
+    let btn_num_1, btn_num2, btn_num3;
     const btn7 = document.querySelector(".btn7");
     const btn8 = document.querySelector(".btn8");
     const btn9 = document.querySelector(".btn9");
@@ -96,7 +88,6 @@
         }
       }
       btn_2 = document.querySelector(`.line2_button${btn_num_2}`)
-      console.log(btn_2)
       btn_2.style.backgroundColor = "#8fc8db";
 
       if (img7) {
@@ -118,24 +109,22 @@
     const line3 = (button_id) => {
       select_num3 = button_id;
       btn_num_3 = select_num3 *= 1;
-      console.log(btn_num_3)
       btn_num_3 -= 6;
-      console.log(btn_num_3)
       if (btn_3) {
         btn_3.style.backgroundColor = "white"
       }
       btn_3 = document.querySelector(`.line3_button${btn_num_3}`)
-      console.log(btn_3)
       btn_3.style.backgroundColor = "#8fc8db";
 
     }
 
     const goDetail = () => {
-      // let sum = select_num1 + select_num2 + select_num3
       final_select_num = String(select_num1) + String(select_num2) + String(select_num3)
-
+      if((final_select_num.includes('undefined'))){
+        alert('짤을 순서대로 선택해주세요')
+        return
+      }
       location.href = `detail/${final_select_num}`
-      // history.push('www.naver.com')
     }
   </script>
 {% endblock image_box %}
