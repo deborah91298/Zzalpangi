@@ -28,7 +28,8 @@ def signup(request):
             blankerror = '이름 또는 비밀번호를 입력해주세요'
             return render(request, 'registration/signup.html', {'error': blankerror})
         new_user = User.objects.create_user(
-        username, password)
+          username=request.POST['username'],
+          password=request.POST['password'])
         auth.login(request, new_user,
                   backend='django.contrib.auth.backends.ModelBackend')
         return redirect('home')
