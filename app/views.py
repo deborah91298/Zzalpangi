@@ -15,23 +15,6 @@ def home(request):
 def mypage(request):
     return render(request, 'mypage.html')
 
-
-# def signup(request):
-#     if (request.method == 'POST'):
-#         found_user = User.objects.filter(username=request.POST['username'])
-#         if(len(found_user) > 0):
-#             error = 'username이 이미 존재합니다'
-#             return render(request, 'registration/signup.html', {'error': error})
-#         new_user = User.objects.create_user(
-#             username=request.POST['username'],
-#             password=request.POST['password']
-#         )
-#         auth.login(request, new_user,
-#                    backend='django.contrib.auth.backends.ModelBackend')
-#         return redirect('home')
-
-#     return render(request, 'registration/signup.html')
-
 def signup(request):
     if (request.method == 'POST'):
         found_user = User.objects.filter(username=request.POST['username'])

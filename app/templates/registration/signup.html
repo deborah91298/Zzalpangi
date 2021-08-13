@@ -9,7 +9,7 @@
   {% endif %}
   <form class="signup_container" method="POST">
     {% csrf_token %}
-    <input class="input_box" type="text" name="username" placeholder="이름" blank=False Null=False>
+    <input class="input_box" type="text" name="username" placeholder="이름">
     <input class="input_box" type="password" name="password" placeholder="비밀번호">
     <button class="signup_button" type="submit">SIGN UP</button>
   </form>
