@@ -15,22 +15,25 @@ def home(request):
 def mypage(request):
     return render(request, 'mypage.html')
 
-
 def signup(request):
     if (request.method == 'POST'):
         found_user = User.objects.filter(username=request.POST['username'])
         if(len(found_user) > 0):
             error = 'username이 이미 존재합니다'
             return render(request, 'registration/signup.html', {'error': error})
+        username = request.POST.get('username', None)
+        #POST로 들어온 데이터에서 username이라는 key로 값을 얻고, 없다면 None을 반환
+        password = request.POST.get('password', None)
+        if not (username and password):
+            blankerror = '이름 또는 비밀번호를 입력해주세요'
+            return render(request, 'registration/signup.html', {'error': blankerror})
         new_user = User.objects.create_user(
-            username=request.POST['username'],
-            password=request.POST['password']
-        )
+        username, password)
         auth.login(request, new_user,
-                   backend='django.contrib.auth.backends.ModelBackend')
+                  backend='django.contrib.auth.backends.ModelBackend')
         return redirect('home')
 
-    return render(request, 'registration/signup.html')
+    return render(request, 'registration/signup.html')    
 
 
 def login(request):
