@@ -1,3 +1,7 @@
+*{
+  background-color: black;
+}
+
 .image_box {
   display: flex;
   flex-direction: column;

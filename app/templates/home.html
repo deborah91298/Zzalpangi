@@ -82,6 +82,11 @@
       btn_num_2 = select_num2 *= 1;
       btn_num_2 -= 3;
 
+      if ((semi_select_num.includes('undefined'))){
+        alert('짤을 순서대로 선택해주세요')
+        exit()
+      }
+
       if (btn_2) {
         btn_2.style.backgroundColor = "white"
         if (btn_3) {
@@ -96,6 +101,8 @@
         img8.remove()
         img9.remove()
       }
+      console.log(semi_select_num)
+      
       img7 = document.createElement('img');
       btn7.appendChild(img7);
       img8 = document.createElement('img');
@@ -111,12 +118,12 @@
       select_num3 = button_id;
       btn_num_3 = select_num3 *= 1;
       btn_num_3 -= 6;
+      console.log(btn_num_3)
       if (btn_3) {
         btn_3.style.backgroundColor = "white"
       }
       btn_3 = document.querySelector(`.line3_button${btn_num_3}`)
       btn_3.style.backgroundColor = "#8fc8db";
-
     }
 
     const goDetail = () => {
