@@ -1,4 +1,4 @@
-# Zzalpangi 짤판기
+# 🎰 Zzalpangi 짤판기
 ![짤판기](https://user-images.githubusercontent.com/75147564/174707651-9c6dbf19-82ac-4293-b30d-b8ba25c33b24.png)
 
 ## About
