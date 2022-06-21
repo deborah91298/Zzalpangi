@@ -1,5 +1,5 @@
 # Zzalpangi 짤판기
-<img width="1211" alt="짤판기" src="https://user-images.githubusercontent.com/75147564/174621599-41a4d648-84bc-4573-9833-eaf6f9b1a7e9.png">
+![짤판기](https://user-images.githubusercontent.com/75147564/174707651-9c6dbf19-82ac-4293-b30d-b8ba25c33b24.png)
 
 ## About
 - 자판기처럼 원하는 짤을 뽑아서 생성, 저장, 공유할 수 있는 플랫폼
